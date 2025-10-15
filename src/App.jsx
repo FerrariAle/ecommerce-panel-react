@@ -19,9 +19,9 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
 
           {/* Rotas Protegidas */}
-          <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
-          <Route path="/products" element={<ProtectedRoute><ProductsPage /></ProtectedRoute>} />
-          <Route path="/orders" element={<ProtectedRoute><OrdersPage /></ProtectedRoute>} />
+          <Route path="/dashboard" element={<ProtectedRoute roles={['admin', 'sales_manager', 'stock_manager']}><DashboardPage /></ProtectedRoute>} />
+          <Route path="/products" element={<ProtectedRoute roles={['admin', 'stock_manager']}><ProductsPage /></ProtectedRoute>} />
+          <Route path="/orders" element={<ProtectedRoute roles={['admin', 'sales_manager']}><OrdersPage /></ProtectedRoute>} />
 
           {/* Rota Raiz */}
           <Route path="/" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
