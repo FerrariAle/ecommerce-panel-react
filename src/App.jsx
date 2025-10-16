@@ -5,6 +5,7 @@ import DashboardPage from './pages/DashboardPage';
 import ProductsPage from './pages/ProductsPage';
 import OrdersPage from './pages/OrdersPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import ProductFormPage from './pages/ProductFormPage';
 
 function App() {
   const location = useLocation();
@@ -20,7 +21,9 @@ function App() {
 
           {/* Rotas Protegidas */}
           <Route path="/dashboard" element={<ProtectedRoute roles={['admin', 'sales_manager', 'stock_manager']}><DashboardPage /></ProtectedRoute>} />
-          <Route path="/products" element={<ProtectedRoute roles={['admin', 'stock_manager']}><ProductsPage /></ProtectedRoute>} />
+          <Route path="/products" element={<ProtectedRoute roles={['admin', 'stock_manager', 'sales_manager']}><ProductsPage /></ProtectedRoute>} />
+          <Route path="/products/new" element={<ProtectedRoute roles={['admin', 'stock_manager']}><ProductFormPage /></ProtectedRoute>} />
+          <Route path="/products/:productId/edit" element={<ProtectedRoute roles={['admin', 'stock_manager']}><ProductFormPage /></ProtectedRoute>} />
           <Route path="/orders" element={<ProtectedRoute roles={['admin', 'sales_manager']}><OrdersPage /></ProtectedRoute>} />
 
           {/* Rota Raiz */}
